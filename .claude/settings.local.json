@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\New User\\\\Desktop\\\\portfolio\" -Recurse -Force)",
+      "Bash(Select-Object FullName, PSIsContainer)",
+      "Bash(Sort-Object FullName)",
+      "Bash(Format-Table -AutoSize)",
+      "WebSearch",
+      "PowerShell(\\(ls \"C:\\\\Users\\\\New User\\\\Desktop\\\\portfolio\" -Force\\) | ForEach-Object { \"$\\($_.FullName\\) \\(IsDir: $\\($_.PSIsContainer\\)\\)\" })",
+      "Bash(git *)"
+    ]
+  }
+}

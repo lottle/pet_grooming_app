@@ -1,0 +1,23 @@
+# Node / SvelteKit
+client/node_modules/
+client/.svelte-kit/
+client/build/
+client/dist/
+client/.env
+client/.env.local
+
+# Ruby / Rails
+server/.bundle/
+server/vendor/bundle/
+server/log/*.log
+server/tmp/
+server/storage/
+server/.env
+server/.env.local
+server/.env.*.local
+server/config/master.key
+server/config/credentials/*.key
+
+# OS
+.DS_Store
+Thumbs.db
