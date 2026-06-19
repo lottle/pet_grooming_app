@@ -6,7 +6,7 @@ A full-stack dog grooming booking system. Clients can register, manage their dog
 
 | Layer | Technology |
 |---|---|
-| Frontend | SvelteKit (Svelte 5 runes), Tailwind CSS v4, TypeScript |
+| Frontend | SvelteKit (Svelte 5 runes), Bootstrap 5.3, TypeScript |
 | Backend | Ruby on Rails 8 (API-only) |
 | Database | MongoDB via Mongoid 9 |
 | Auth | JWT stored in httpOnly cookies |
@@ -23,37 +23,39 @@ portfolio/
 
 ### Prerequisites
 
+- [rbenv](https://github.com/rbenv/rbenv) + [ruby-build](https://github.com/rbenv/ruby-build)
 - Node.js 22+
-- Ruby 3.3 (via RubyInstaller on Windows — included at `C:\Ruby33-x64`)
 - MongoDB 8.3 running on `localhost:27017`
+- [Overmind](https://github.com/DarthSim/overmind) (or Foreman)
 
-### 1. Start MongoDB
+### 1. Install Ruby
 
-```powershell
-& "C:\Program Files\MongoDB\Server\8.3\bin\mongod.exe" --dbpath "C:\data\db"
+```bash
+rbenv install 3.3.11
 ```
 
-### 2. Start the Rails API
+### 2. Install dependencies
 
-```powershell
-cd server
-bundle exec rails server -p 3000
+```bash
+cd server && bundle install && cd ..
+cd client && npm install && cd ..
 ```
 
-On first run, seed the database:
+### 3. Seed the database
 
-```powershell
-bundle exec rails db:seed
+On first run, create the business account and default grooming services:
+
+```bash
+cd server && bundle exec rails db:seed
 ```
 
-This creates the business account and four default grooming services.
+### 4. Start everything
 
-### 3. Start the SvelteKit frontend
-
-```powershell
-cd client
-npm run dev
+```bash
+overmind start
 ```
+
+This starts MongoDB, the Rails API on port 3000, and the SvelteKit frontend on port 5173.
 
 Open [http://localhost:5173](http://localhost:5173).
 

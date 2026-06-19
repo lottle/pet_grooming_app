@@ -1,4 +1,4 @@
-import { fail, redirect } from '@sveltejs/kit';
+import { fail, redirect, isRedirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 
 const RAILS_URL = process.env.RAILS_URL || 'http://localhost:3000';
@@ -36,7 +36,8 @@ export const actions: Actions = {
 			});
 
 			redirect(303, body.user.role === 'business' ? '/business/dashboard' : '/client/dashboard');
-		} catch {
+		} catch (err) {
+			if (isRedirect(err)) throw err;
 			return fail(500, { error: 'Could not connect to server', email });
 		}
 	}

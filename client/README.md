@@ -5,7 +5,7 @@ SvelteKit (Svelte 5) frontend for the Pawfect Grooming booking system.
 ## Stack
 
 - **SvelteKit** with Svelte 5 runes (`$state`, `$derived`, `$effect`)
-- **Tailwind CSS v4** via the Vite plugin
+- **Bootstrap 5.3** for layout, components, and utilities
 - **TypeScript**
 - **date-fns** for date formatting and calendar calculations
 - **Nunito** font (Google Fonts) for the warm, rounded aesthetic
@@ -29,7 +29,7 @@ npm run preview
 ```
 src/
 ├── hooks.server.ts              # Reads JWT cookie → populates locals.user
-├── app.css                      # Tailwind + design tokens (palette, font)
+├── app.css                      # Bootstrap import + brand design tokens (palette, font, custom utilities)
 ├── lib/
 │   ├── types.ts                 # Shared TypeScript interfaces
 │   ├── api/client.ts            # Fetch wrapper (routes through BFF proxy)

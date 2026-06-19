@@ -14,48 +14,48 @@
 
 <svelte:head><title>Bookings – Pawfect Business</title></svelte:head>
 
-<h1 class="text-2xl font-extrabold text-[var(--color-brown-800)] mb-6">All Bookings 📋</h1>
+<h1 class="fs-3 fw-bolder text-brown-800 mb-4">All Bookings 📋</h1>
 
 {#if form?.error}
-	<div class="bg-red-50 text-red-600 text-sm rounded-xl px-4 py-3 mb-5">{form.error}</div>
+	<div class="alert alert-danger fs-sm">{form.error}</div>
 {/if}
 
 {#if confirmed.length > 0}
-	<h2 class="font-bold text-[var(--color-brown-700)] mb-3">Upcoming / Confirmed</h2>
-	<div class="flex flex-col gap-3 mb-8">
+	<h2 class="fw-bold text-brown mb-2">Upcoming / Confirmed</h2>
+	<div class="d-flex flex-column gap-3 mb-4">
 		{#each confirmed as booking (booking.id)}
-			<div class="bg-white rounded-3xl shadow-sm p-5">
-				<div class="flex items-start justify-between">
+			<div class="card-custom p-4">
+				<div class="d-flex align-items-start justify-content-between">
 					<div>
-						<p class="font-bold text-[var(--color-brown-800)]">{booking.service_snapshot?.name}</p>
-						<p class="text-sm text-[var(--color-sage-600)]">{booking.client?.name} · {booking.dog?.name} ({booking.dog?.breed})</p>
-						<p class="text-xs text-[var(--color-brown-700)] mt-1">{format(new Date(booking.starts_at), 'EEE d MMM yyyy, h:mm a')}</p>
+						<p class="fw-bold text-brown-800 mb-0">{booking.service_snapshot?.name}</p>
+						<p class="fs-sm text-sage-600 mb-0">{booking.client?.name} · {booking.dog?.name} ({booking.dog?.breed})</p>
+						<p class="fs-xs text-brown mt-1 mb-0">{format(new Date(booking.starts_at), 'EEE d MMM yyyy, h:mm a')}</p>
 					</div>
-					<div class="flex gap-3 items-center shrink-0 ml-4">
+					<div class="d-flex gap-3 align-items-center flex-shrink-0 ms-3">
 						<button
 							onclick={() => reschedulingId = reschedulingId === booking.id ? null : booking.id}
-							class="text-xs font-semibold text-[var(--color-sage-500)] hover:underline"
+							class="btn-plain fs-xs fw-semibold text-sage hover-underline"
 						>
 							Reschedule
 						</button>
 						<form method="POST" action="?/cancel" use:enhance>
 							<input type="hidden" name="id" value={booking.id} />
-							<button type="submit" onclick={(e) => { if (!confirm('Cancel this booking?')) e.preventDefault(); }} class="text-xs font-semibold text-red-400 hover:text-red-600">Cancel</button>
+							<button type="submit" onclick={(e) => { if (!confirm('Cancel this booking?')) e.preventDefault(); }} class="btn-plain fs-xs fw-semibold text-danger">Cancel</button>
 						</form>
 					</div>
 				</div>
 
 				{#if reschedulingId === booking.id}
-					<form method="POST" action="?/reschedule" use:enhance={() => { saving = true; return async ({ update }) => { saving = false; reschedulingId = null; await update(); }; }} class="mt-4 flex gap-3 items-end border-t pt-4">
-						<div class="flex flex-col gap-1 flex-1">
-							<label class="text-xs font-semibold text-[var(--color-brown-700)]">New date &amp; time</label>
-							<input type="datetime-local" name="starts_at" bind:value={newDateTime} required class="border border-[var(--color-sage-200)] rounded-xl px-3 py-2 text-sm" />
+					<form method="POST" action="?/reschedule" use:enhance={() => { saving = true; return async ({ update }) => { saving = false; reschedulingId = null; await update(); }; }} class="mt-3 d-flex gap-3 align-items-end border-top pt-3">
+						<div class="flex-grow-1">
+							<label class="form-label fs-xs fw-semibold text-brown">New date &amp; time</label>
+							<input type="datetime-local" name="starts_at" bind:value={newDateTime} required class="form-control input-custom fs-sm" />
 						</div>
 						<input type="hidden" name="id" value={booking.id} />
-						<button type="submit" disabled={saving} class="bg-[var(--color-peach-500)] text-white font-bold px-5 py-2 rounded-2xl text-sm hover:bg-[var(--color-peach-400)] transition disabled:opacity-60">
+						<button type="submit" disabled={saving} class="btn btn-peach fw-bold px-4 py-2 fs-sm">
 							{saving ? 'Saving…' : 'Confirm'}
 						</button>
-						<button type="button" onclick={() => (reschedulingId = null)} class="text-sm text-[var(--color-sage-500)] hover:underline">Cancel</button>
+						<button type="button" onclick={() => (reschedulingId = null)} class="btn-plain text-sage fs-sm hover-underline">Cancel</button>
 					</form>
 				{/if}
 			</div>
@@ -64,23 +64,23 @@
 {/if}
 
 {#if cancelled.length > 0}
-	<h2 class="font-bold text-[var(--color-brown-700)] mb-3">Cancelled</h2>
-	<div class="flex flex-col gap-3">
+	<h2 class="fw-bold text-brown mb-2">Cancelled</h2>
+	<div class="d-flex flex-column gap-3">
 		{#each cancelled as booking (booking.id)}
-			<div class="bg-white rounded-3xl shadow-sm p-5 opacity-60 flex items-center justify-between">
+			<div class="card-custom p-4 opacity-75 d-flex align-items-center justify-content-between">
 				<div>
-					<p class="font-bold text-[var(--color-brown-800)]">{booking.service_snapshot?.name}</p>
-					<p class="text-sm text-[var(--color-sage-600)]">{booking.client?.name} · {booking.dog?.name}</p>
-					<p class="text-xs text-[var(--color-brown-700)] mt-1">{format(new Date(booking.starts_at), 'EEE d MMM yyyy, h:mm a')}</p>
+					<p class="fw-bold text-brown-800 mb-0">{booking.service_snapshot?.name}</p>
+					<p class="fs-sm text-sage-600 mb-0">{booking.client?.name} · {booking.dog?.name}</p>
+					<p class="fs-xs text-brown mt-1 mb-0">{format(new Date(booking.starts_at), 'EEE d MMM yyyy, h:mm a')}</p>
 				</div>
-				<span class="bg-red-50 text-red-500 text-xs font-bold px-3 py-1 rounded-full">Cancelled</span>
+				<span class="badge rounded-pill bg-danger-subtle text-danger fs-xs fw-bold px-3 py-1">Cancelled</span>
 			</div>
 		{/each}
 	</div>
 {/if}
 
 {#if data.bookings.length === 0}
-	<div class="bg-[var(--color-sage-50)] rounded-3xl p-8 text-center text-[var(--color-sage-600)]">
-		<p>No bookings yet.</p>
+	<div class="card-sage p-4 text-center text-sage-600">
+		<p class="mb-0">No bookings yet.</p>
 	</div>
 {/if}

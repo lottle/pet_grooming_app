@@ -1,8 +1,7 @@
-@import "tailwindcss";
+@import 'bootstrap/dist/css/bootstrap.min.css';
 
-@theme {
+:root {
 	--font-sans: "Nunito", ui-sans-serif, system-ui, sans-serif;
-
 	--color-cream: #fdf8f3;
 	--color-sage-50: #f3f7f3;
 	--color-sage-100: #e0ebe0;
@@ -16,9 +15,6 @@
 	--color-peach-500: #e87340;
 	--color-brown-700: #5c3d2e;
 	--color-brown-800: #3e2723;
-
-	--radius-xl: 1rem;
-	--radius-2xl: 1.5rem;
 }
 
 body {
@@ -26,3 +22,137 @@ body {
 	color: var(--color-brown-800);
 	font-family: var(--font-sans);
 }
+
+/* Font-size helpers not covered by Bootstrap */
+.fs-xs { font-size: 0.75rem; }
+.fs-sm { font-size: 0.875rem; }
+
+/* Brand colour — text */
+.text-sage    { color: var(--color-sage-500); }
+.text-sage-600 { color: var(--color-sage-600); }
+.text-sage-700 { color: var(--color-sage-700); }
+.text-peach   { color: var(--color-peach-500); }
+.text-brown   { color: var(--color-brown-700); }
+.text-brown-800 { color: var(--color-brown-800); }
+
+/* Brand colour — background */
+.bg-cream    { background-color: var(--color-cream); }
+.bg-sage-50  { background-color: var(--color-sage-50); }
+.bg-sage-100 { background-color: var(--color-sage-100); }
+.bg-sage-500 { background-color: var(--color-sage-500); }
+.bg-peach-100 { background-color: var(--color-peach-100); }
+.bg-peach-200 { background-color: var(--color-peach-200); }
+.bg-peach-400 { background-color: var(--color-peach-400); }
+.bg-peach-500 { background-color: var(--color-peach-500); }
+
+/* Brand colour — border */
+.border-sage-200  { border-color: var(--color-sage-200) !important; }
+.border-sage-500  { border-color: var(--color-sage-500) !important; }
+.border-peach-200 { border-color: var(--color-peach-200) !important; }
+.border-peach-400 { border-color: var(--color-peach-400) !important; }
+.border-transparent { border-color: transparent !important; }
+
+/* Buttons */
+.btn-sage {
+	background-color: var(--color-sage-500);
+	border-color: var(--color-sage-500);
+	color: #fff;
+	border-radius: 1rem;
+}
+.btn-sage:hover,
+.btn-sage:focus-visible {
+	background-color: var(--color-sage-600);
+	border-color: var(--color-sage-600);
+	color: #fff;
+}
+.btn-peach {
+	background-color: var(--color-peach-500);
+	border-color: var(--color-peach-500);
+	color: #fff;
+	border-radius: 1rem;
+}
+.btn-peach:hover,
+.btn-peach:focus-visible {
+	background-color: var(--color-peach-400);
+	border-color: var(--color-peach-400);
+	color: #fff;
+}
+.btn-outline-sage {
+	background-color: transparent;
+	border: 2px solid var(--color-sage-500);
+	color: var(--color-sage-600);
+	border-radius: 1rem;
+}
+.btn-outline-sage:hover,
+.btn-outline-sage:focus-visible {
+	background-color: var(--color-sage-50);
+	color: var(--color-sage-700);
+}
+
+/* Plain (link-style) button — no chrome, inherits font */
+.btn-plain {
+	background: none;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	font: inherit;
+	color: inherit;
+	text-decoration: none;
+	line-height: inherit;
+}
+.btn-plain:focus { outline: none; }
+.btn-plain:focus-visible { outline: 2px solid currentColor; border-radius: 2px; }
+
+/* Cards */
+.card-custom {
+	background-color: #fff;
+	border-radius: 1.5rem;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+.card-peach {
+	background-color: var(--color-peach-100);
+	border-radius: 1.5rem;
+}
+.card-sage {
+	background-color: var(--color-sage-50);
+	border-radius: 1.5rem;
+}
+
+/* Form inputs */
+.input-custom {
+	border-color: var(--color-sage-200);
+	border-radius: 0.625rem;
+}
+.input-custom:focus {
+	border-color: var(--color-sage-500);
+	box-shadow: 0 0 0 0.2rem rgba(106, 158, 106, 0.2);
+	outline: none;
+}
+
+/* Badges */
+.badge-sage {
+	background-color: var(--color-sage-100);
+	color: var(--color-sage-700);
+}
+
+/* Layout */
+.mw-md  { max-width: 28rem; }
+.mw-lg  { max-width: 32rem; }
+.mw-4xl { max-width: 56rem; }
+.mw-6xl { max-width: 72rem; }
+.min-h-32 { min-height: 8rem; }
+
+/* 7-column calendar grid */
+.calendar-grid {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	gap: 0.75rem;
+}
+
+/* Hover helpers */
+.hover-shadow:hover    { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12) !important; }
+.hover-underline:hover { text-decoration: underline; }
+.hover-sage-50:hover   { background-color: var(--color-sage-50); }
+.hover-peach-200:hover { background-color: var(--color-peach-200); }
+.hover-sage-700:hover  { color: var(--color-sage-700); }
+.hover-red-600:hover   { color: #dc2626; }

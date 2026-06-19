@@ -8,20 +8,20 @@
 	];
 </script>
 
-<div class="min-h-screen bg-[var(--color-cream)] flex flex-col">
-	<nav class="bg-white shadow-sm px-6 py-4 flex items-center justify-between">
-		<a href="/business/dashboard" class="text-lg font-extrabold text-[var(--color-brown-800)]">🐾 Pawfect — Business</a>
-		<div class="flex items-center gap-4">
+<div class="min-vh-100 bg-cream d-flex flex-column">
+	<nav class="bg-white shadow-sm px-4 py-3 d-flex align-items-center justify-content-between">
+		<a href="/business/dashboard" class="fs-5 fw-bolder text-brown-800 text-decoration-none">🐾 Pawfect — Business</a>
+		<div class="d-flex align-items-center gap-3">
 			{#each navLinks as link}
-				<a href={link.href} class="text-sm font-semibold text-[var(--color-sage-600)] hover:text-[var(--color-sage-700)]">{link.label}</a>
+				<a href={link.href} class="fs-sm fw-semibold text-sage-600 text-decoration-none hover-sage-700">{link.label}</a>
 			{/each}
 			<form method="POST" action="/logout">
-				<button type="submit" class="text-sm font-semibold text-[var(--color-brown-700)] hover:underline">Log out</button>
+				<button type="submit" class="btn-plain fs-sm fw-semibold text-brown hover-underline">Log out</button>
 			</form>
 		</div>
 	</nav>
 
-	<main class="flex-1 px-6 py-8 max-w-6xl mx-auto w-full">
+	<main class="flex-grow-1 px-4 py-4 mw-6xl mx-auto w-100">
 		{@render children()}
 	</main>
 </div>

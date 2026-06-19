@@ -7,7 +7,22 @@
       "Bash(Format-Table -AutoSize)",
       "WebSearch",
       "PowerShell(\\(ls \"C:\\\\Users\\\\New User\\\\Desktop\\\\portfolio\" -Force\\) | ForEach-Object { \"$\\($_.FullName\\) \\(IsDir: $\\($_.PSIsContainer\\)\\)\" })",
-      "Bash(git *)"
+      "Bash(git *)",
+      "Bash(mongod --version)",
+      "Read(//opt/homebrew/var/mongodb/**)",
+      "Read(//opt/homebrew/var/log/mongodb/**)",
+      "Bash(rbenv versions *)",
+      "Bash(bundle install *)",
+      "Bash(wsl *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" -X POST http://localhost:3000/api/v1/auth/login -H \"Content-Type: application/json\" -d '{\"email\":\"business@pawfect.com\",\"password\":\"grooming123\"}')",
+      "Bash(curl *)",
+      "Bash(mongosh *)",
+      "Bash(mongo *)",
+      "PowerShell(wsl -e bash -c \"cd ~/portfolio/pet_grooming_app/server && bundle exec rails db:seed 2>&1\")",
+      "PowerShell(wsl -e bash -c \"cd ~/portfolio/pet_grooming_app/server && cat .ruby-version 2>/dev/null || echo 'no .ruby-version'; which ruby; ruby --version\" 2>&1)",
+      "PowerShell(wsl -e bash -l -c \"cd ~/portfolio/pet_grooming_app/server && ruby --version && bundle exec rails db:seed 2>&1\")",
+      "PowerShell(wsl -e bash -c \"ls ~/.rbenv/bin/ 2>/dev/null || ls ~/.rvm/bin/ 2>/dev/null || echo 'no rvm/rbenv'\" 2>&1)",
+      "PowerShell(wsl -e bash -c 'export PATH=\"$HOME/.rbenv/bin:$PATH\"; eval \"$\\(rbenv init -\\)\"; cd ~/portfolio/pet_grooming_app/server && ruby --version && bundle exec rails db:seed 2>&1')"
     ]
   }
 }

@@ -12,7 +12,7 @@ class Api::V1::AuthController < ApplicationController
   end
 
   def login
-    user = User.find_by(email: params[:email].to_s.downcase.strip)
+    user = User.where(email: params[:email].to_s.downcase.strip).first
     if user&.authenticate(params[:password])
       token = JwtService.encode({ sub: user.id.to_s, role: user.role })
       render json: { user: user_json(user), token: token }

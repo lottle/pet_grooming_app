@@ -16,40 +16,40 @@
 	}
 
 	const statusColors: Record<string, string> = {
-		confirmed: 'bg-[var(--color-sage-100)] text-[var(--color-sage-700)]',
-		cancelled: 'bg-red-50 text-red-500'
+		confirmed: 'badge-sage',
+		cancelled: 'bg-danger-subtle text-danger'
 	};
 </script>
 
 <svelte:head><title>Calendar – Pawfect Business</title></svelte:head>
 
-<div class="flex items-center justify-between mb-6">
-	<h1 class="text-2xl font-extrabold text-[var(--color-brown-800)]">Weekly Calendar 📅</h1>
-	<div class="flex gap-2">
-		<a href="?week={data.weekOffset - 1}" class="border border-[var(--color-sage-200)] px-3 py-1.5 rounded-xl text-sm font-semibold hover:bg-[var(--color-sage-50)] transition">← Prev</a>
-		<a href="?week=0" class="border border-[var(--color-sage-200)] px-3 py-1.5 rounded-xl text-sm font-semibold hover:bg-[var(--color-sage-50)] transition">Today</a>
-		<a href="?week={data.weekOffset + 1}" class="border border-[var(--color-sage-200)] px-3 py-1.5 rounded-xl text-sm font-semibold hover:bg-[var(--color-sage-50)] transition">Next →</a>
+<div class="d-flex align-items-center justify-content-between mb-4">
+	<h1 class="fs-3 fw-bolder text-brown-800 mb-0">Weekly Calendar 📅</h1>
+	<div class="d-flex gap-2">
+		<a href="?week={data.weekOffset - 1}" class="btn border border-sage-200 px-3 py-1 rounded-4 fs-sm fw-semibold hover-sage-50">← Prev</a>
+		<a href="?week=0" class="btn border border-sage-200 px-3 py-1 rounded-4 fs-sm fw-semibold hover-sage-50">Today</a>
+		<a href="?week={data.weekOffset + 1}" class="btn border border-sage-200 px-3 py-1 rounded-4 fs-sm fw-semibold hover-sage-50">Next →</a>
 	</div>
 </div>
 
-<div class="grid grid-cols-7 gap-3">
+<div class="calendar-grid">
 	{#each weekDays as day (day.toISOString())}
 		{@const dayBookings = bookingsForDay(day)}
 		{@const isToday = day.toDateString() === new Date().toDateString()}
-		<div class="bg-white rounded-3xl shadow-sm p-3 min-h-32">
+		<div class="card-custom p-3 min-h-32">
 			<div class="text-center mb-2">
-				<p class="text-xs font-bold {isToday ? 'text-[var(--color-peach-500)]' : 'text-[var(--color-sage-600)]'}">{format(day, 'EEE')}</p>
-				<p class="text-lg font-extrabold {isToday ? 'text-[var(--color-peach-500)]' : 'text-[var(--color-brown-800)]'}">{format(day, 'd')}</p>
+				<p class="fs-xs fw-bold mb-0 {isToday ? 'text-peach' : 'text-sage-600'}">{format(day, 'EEE')}</p>
+				<p class="fs-5 fw-bolder mb-0 {isToday ? 'text-peach' : 'text-brown-800'}">{format(day, 'd')}</p>
 			</div>
 			{#each dayBookings as booking (booking.id)}
-				<a href="/business/bookings?id={booking.id}" class="block bg-[var(--color-peach-100)] rounded-xl px-2 py-1.5 mb-1 hover:bg-[var(--color-peach-200)] transition">
-					<p class="text-xs font-bold text-[var(--color-brown-800)] truncate">{booking.service_snapshot?.name}</p>
-					<p class="text-xs text-[var(--color-sage-600)] truncate">{booking.client?.name}</p>
-					<p class="text-xs text-[var(--color-brown-700)]">{format(new Date(booking.starts_at), 'h:mm a')}</p>
+				<a href="/business/bookings?id={booking.id}" class="d-block bg-peach-100 rounded-3 px-2 py-1 mb-1 text-decoration-none hover-peach-200">
+					<p class="fs-xs fw-bold text-brown-800 text-truncate mb-0">{booking.service_snapshot?.name}</p>
+					<p class="fs-xs text-sage-600 text-truncate mb-0">{booking.client?.name}</p>
+					<p class="fs-xs text-brown mb-0">{format(new Date(booking.starts_at), 'h:mm a')}</p>
 				</a>
 			{/each}
 			{#if dayBookings.length === 0}
-				<p class="text-xs text-center text-[var(--color-sage-100)] mt-4">—</p>
+				<p class="fs-xs text-center text-sage-100 mt-3 mb-0">—</p>
 			{/if}
 		</div>
 	{/each}

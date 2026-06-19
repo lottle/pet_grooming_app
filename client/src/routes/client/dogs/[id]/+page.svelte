@@ -7,13 +7,13 @@
 
 <svelte:head><title>Edit {data.dog.name} – Pawfect</title></svelte:head>
 
-<a href="/client/dogs" class="text-sm text-[var(--color-sage-500)] hover:underline mb-6 block">← Back to dogs</a>
+<a href="/client/dogs" class="fs-sm text-sage text-decoration-none hover-underline d-block mb-4">← Back to dogs</a>
 
-<div class="bg-white rounded-3xl shadow-sm p-8 max-w-lg">
-	<h1 class="text-xl font-extrabold text-[var(--color-brown-800)] mb-6">Edit {data.dog.name}</h1>
+<div class="card-custom p-4 mw-lg">
+	<h1 class="fs-4 fw-bolder text-brown-800 mb-4">Edit {data.dog.name}</h1>
 
 	{#if form?.error}
-		<p class="text-red-500 text-sm mb-4">{form.error}</p>
+		<p class="text-danger fs-sm mb-3">{form.error}</p>
 	{/if}
 
 	<form
@@ -23,38 +23,38 @@
 			saving = true;
 			return async ({ update }) => { saving = false; await update(); };
 		}}
-		class="flex flex-col gap-4"
+		class="d-flex flex-column gap-3"
 	>
-		<div class="flex flex-col gap-1">
-			<label class="text-xs font-semibold text-[var(--color-brown-700)]">Name *</label>
-			<input name="name" value={data.dog.name} required class="border border-[var(--color-sage-200)] rounded-xl px-3 py-2 text-sm" />
+		<div>
+			<label class="form-label fs-xs fw-semibold text-brown">Name *</label>
+			<input name="name" value={data.dog.name} required class="form-control input-custom fs-sm" />
 		</div>
-		<div class="flex flex-col gap-1">
-			<label class="text-xs font-semibold text-[var(--color-brown-700)]">Breed</label>
-			<input name="breed" value={data.dog.breed ?? ''} class="border border-[var(--color-sage-200)] rounded-xl px-3 py-2 text-sm" />
+		<div>
+			<label class="form-label fs-xs fw-semibold text-brown">Breed</label>
+			<input name="breed" value={data.dog.breed ?? ''} class="form-control input-custom fs-sm" />
 		</div>
-		<div class="flex flex-col gap-1">
-			<label class="text-xs font-semibold text-[var(--color-brown-700)]">Age (years)</label>
-			<input name="age" type="number" value={data.dog.age ?? ''} min="0" class="border border-[var(--color-sage-200)] rounded-xl px-3 py-2 text-sm" />
+		<div>
+			<label class="form-label fs-xs fw-semibold text-brown">Age (years)</label>
+			<input name="age" type="number" value={data.dog.age ?? ''} min="0" class="form-control input-custom fs-sm" />
 		</div>
-		<div class="flex flex-col gap-1">
-			<label class="text-xs font-semibold text-[var(--color-brown-700)]">Notes</label>
-			<textarea name="notes" rows="3" class="border border-[var(--color-sage-200)] rounded-xl px-3 py-2 text-sm resize-none">{data.dog.notes ?? ''}</textarea>
+		<div>
+			<label class="form-label fs-xs fw-semibold text-brown">Notes</label>
+			<textarea name="notes" rows="3" class="form-control input-custom fs-sm" style="resize: none">{data.dog.notes ?? ''}</textarea>
 		</div>
 		<button
 			type="submit"
 			disabled={saving}
-			class="bg-[var(--color-sage-500)] text-white font-bold py-2.5 rounded-2xl hover:bg-[var(--color-sage-600)] transition disabled:opacity-60"
+			class="btn btn-sage fw-bold py-2"
 		>
 			{saving ? 'Saving…' : 'Save Changes'}
 		</button>
 	</form>
 
-	<form method="POST" action="?/delete" class="mt-4">
+	<form method="POST" action="?/delete" class="mt-3">
 		<button
 			type="submit"
 			onclick={(e) => { if (!confirm(`Remove ${data.dog.name}?`)) e.preventDefault(); }}
-			class="w-full text-red-500 text-sm font-semibold py-2 hover:underline"
+			class="btn-plain text-danger fs-sm fw-semibold w-100 text-center hover-underline"
 		>
 			Remove this dog
 		</button>
