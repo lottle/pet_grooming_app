@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: pet-grooming-api
+    env: ruby
+    rootDir: server
+    buildCommand: bundle install
+    startCommand: bundle exec puma -C config/puma.rb
+    envVars:
+      - key: RAILS_ENV
+        value: production
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+
+  - type: web
+    name: pet-grooming-client
+    env: node
+    rootDir: client
+    buildCommand: npm install && npm run build
+    startCommand: node build
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PUBLIC_API_URL
+        sync: false

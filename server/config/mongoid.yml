@@ -348,6 +348,11 @@ development:
     # validate_update_replace: false
 
 
+production:
+  clients:
+    default:
+      uri: <%= ENV['DATABASE_URL'] %>
+
 test:
   clients:
     default:
