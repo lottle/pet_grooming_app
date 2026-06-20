@@ -3,17 +3,8 @@ development:
   clients:
     # Defines the default client. (required)
     default:
-      # Mongoid can connect to a URI accepted by the driver:
-      # uri: mongodb://user:password@mongodb.domain.com:27017/server_development
-
-      # Otherwise define the parameters separately.
-      # This defines the name of the default database that Mongoid can connect to.
-      # (required).
-      database: grooming_dev
-      # Provides the hosts the default client can connect to. Must be an array
-      # of host:port pairs. (required)
-      hosts:
-        - localhost:27017
+      # Reads connection string from DATABASE_URL env var; falls back to local for development.
+      uri: <%= ENV['DATABASE_URL'] || 'mongodb://localhost:27017/grooming_dev' %>
       options:
         # Note that all options listed below are Ruby driver client options (the mongo gem).
         # Please refer to the driver documentation of the version of the mongo gem you are using

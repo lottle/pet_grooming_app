@@ -22,7 +22,13 @@
       "PowerShell(wsl -e bash -c \"cd ~/portfolio/pet_grooming_app/server && cat .ruby-version 2>/dev/null || echo 'no .ruby-version'; which ruby; ruby --version\" 2>&1)",
       "PowerShell(wsl -e bash -l -c \"cd ~/portfolio/pet_grooming_app/server && ruby --version && bundle exec rails db:seed 2>&1\")",
       "PowerShell(wsl -e bash -c \"ls ~/.rbenv/bin/ 2>/dev/null || ls ~/.rvm/bin/ 2>/dev/null || echo 'no rvm/rbenv'\" 2>&1)",
-      "PowerShell(wsl -e bash -c 'export PATH=\"$HOME/.rbenv/bin:$PATH\"; eval \"$\\(rbenv init -\\)\"; cd ~/portfolio/pet_grooming_app/server && ruby --version && bundle exec rails db:seed 2>&1')"
+      "PowerShell(wsl -e bash -c 'export PATH=\"$HOME/.rbenv/bin:$PATH\"; eval \"$\\(rbenv init -\\)\"; cd ~/portfolio/pet_grooming_app/server && ruby --version && bundle exec rails db:seed 2>&1')",
+      "Bash(find \"\\\\\\\\wsl.localhost\\\\Ubuntu\\\\home\\\\charlotte\\\\portfolio\\\\pet_grooming_app\" -name \".env*\" -o -name \"*.local.yml\")",
+      "Bash(find \"\\\\\\\\wsl.localhost\\\\Ubuntu\\\\home\\\\charlotte\\\\portfolio\\\\pet_grooming_app\" -type f \\\\\\( -name \"*.yml\" -o -name \"*.yaml\" \\\\\\))",
+      "Bash(find \"\\\\\\\\wsl.localhost\\\\Ubuntu\\\\home\\\\charlotte\\\\portfolio\\\\pet_grooming_app\" -type f -name \"*.md\")",
+      "Bash(xargs grep -l -i \"database\\\\|mongo\\\\|env\")",
+      "Bash(find \"\\\\\\\\wsl.localhost\\\\Ubuntu\\\\home\\\\charlotte\\\\portfolio\\\\pet_grooming_app\" -type f \\\\\\( -name \"README*\" -o -name \"SETUP*\" -o -name \".env.example\" \\\\\\))",
+      "Bash(cat \"\\\\\\\\wsl.localhost\\\\Ubuntu\\\\home\\\\charlotte\\\\portfolio\\\\pet_grooming_app\\\\server\\\\Gemfile.lock\")"
     ]
   }
 }
